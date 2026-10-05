@@ -1,0 +1,20 @@
+<!doctype html>
+<html><body>
+<h2>Book House</h2>
+<form id="f">
+  <input name="house_id" placeholder="House ID" required><br>
+  <input name="start_date" placeholder="Start date (YYYY-MM-DD)" required><br>
+  <input name="end_date" placeholder="End date (YYYY-MM-DD)"><br>
+  <button>Book</button>
+</form>
+<div id="out"></div>
+<script>
+document.getElementById('f').onsubmit = async e => {
+  e.preventDefault();
+  const form = new FormData(e.target);
+  const res = await fetch('../dobooking.php', {method:'POST', body: form});
+  const js = await res.json();
+  document.getElementById('out').textContent = js.message || JSON.stringify(js);
+};
+</script>
+</body></html>

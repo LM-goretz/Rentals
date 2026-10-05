@@ -1,0 +1,22 @@
+<!doctype html>
+<html><body>
+<h2>Sign up</h2>
+<form id="f">
+  <input name="name" placeholder="Full name" required><br>
+  <input name="email" placeholder="Email" required><br>
+  <input name="password" placeholder="Password" type="password" required><br>
+  <select name="role"><option value="tenant">Tenant</option><option value="owner">Owner</option></select><br>
+  <button>Create account</button>
+</form>
+<div id="out"></div>
+<script>
+document.getElementById('f').onsubmit = async e => {
+  e.preventDefault();
+  const form = new FormData(e.target);
+  const res = await fetch('../signup.php', {method:'POST', body: form});
+  const js = await res.json();
+  document.getElementById('out').textContent = js.message || JSON.stringify(js);
+  if (js.success) location.href = 'signin.html';
+};
+</script>
+</body></html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html><body>
+<h2>Sign in</h2>
+<form id="f">
+  <input name="email" placeholder="Email" required><br>
+  <input name="password" placeholder="Password" type="password" required><br>
+  <button>Sign in</button>
+</form>
+<div id="out"></div>
+<script>
+document.getElementById('f').onsubmit = async e => {
+  e.preventDefault();
+  const form = new FormData(e.target);
+  const res = await fetch('../signin.php', {method:'POST', body: form});
+  const js = await res.json();
+  document.getElementById('out').textContent = js.message || JSON.stringify(js);
+  if (js.success) location.href = 'index.html';
+};
+</script>
+</body></html>

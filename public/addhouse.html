@@ -1,0 +1,15 @@
+<!doctype html>
+<html><body>
+<h2>Add House (owner)</h2>
+<form id="f" enctype="multipart/form-data" method="post" action="../addhouse.php">
+  <input name="title" placeholder="Title" required><br>
+  <input name="rent" placeholder="Rent" required><br>
+  <input name="rooms" placeholder="Rooms"><br>
+  <input name="location" placeholder="Location"><br>
+  <textarea name="description" placeholder="Description"></textarea><br>
+  <label>Photos (choose multiple):</label><br>
+  <input type="file" name="images[]" multiple accept="image/*"><br>
+  <button>Add</button>
+</form>
+<p>Note: you must be signed-in as an owner for this to succeed (session-based).</p>
+</body></html>
